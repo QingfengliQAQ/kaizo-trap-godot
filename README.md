@@ -4,15 +4,14 @@
 
 ## ✨ Highlights
 
-* **Crisp 16-Bit Pixel Art (`320×180` integer-scaled)** with toggleable **CRT Scanline**, **Arrange Mode Blizzard**, and **VRAM Glitch** Godot 4 shaders.
-* **Celeste-Grade Platformer Feel**:
-  * Jump Apex anti-gravity hang, 4px ceiling corner correction, coyote time, jump buffering, wall-slide & wall-kick grace, fast-fall, squash & stretch, dust particles, afterimage trails, and hitstop.
-  * Authentic **A / C / G / T** manual moveset: Variable Jump (`A`), Sprint (`T`), Low-Ceiling Slide (`G`), Long Jump (`G+A`), and midair **Ammonite Shell Jump (`Up+C`)**.
-  * Instant `< 0.25s` respawn with persistent death splat decals across retries.
-* **Celeste-Style Assist Mode (`F2`)**:
-  * Stepped **Game Speed (`100%` down to `50%`)**
-  * **Invincibility Mode** (safe hazard shield bounce + bottomless pit rescue bounce)
-  * Hidden Kaizo Block outlines, live `A/C/G/T` Input Display, and Save States (`F5` / `F7`).
+* **High-FPS Smoothness (`120Hz` Physics + Physics Interpolation + 8-Frame Run Cycle + Full-Refresh-Rate Spring Hair)**:
+  * Crisp 16-bit pixel art rendered cleanly in `canvas_items` stretch mode with `TEXTURE_FILTER_NEAREST` and static terrain caching for locked 120–240+ FPS.
+  * Dynamic 6-node *Celeste*-style ponytail hair physics that communicates Dash charge color in real time (`Orange-Red` = Ready, `Cyan` = Spent, `White Flash` = Refilled).
+* **1:1 Celeste-Aligned Feel & Flow-Driven Level Design**:
+  * 8-Way Air Dash (45ms freeze-frame, 4px corner correction, Wave/Hyper/Super Dash, Wall Bounce), Wall Grab & Climb with 110 Stamina, Jump Apex anti-gravity hang, Coyote Time & Jump Buffering.
+  * Sight-readable *Celeste*-style rooms featuring **Green Dash Refill Crystals**, **Traffic Zip-Mover Blocks**, **Starry Glitch Dream Blocks** (dash straight through corrupted code!), **Omni-Springs**, and **Celeste Strawberry-style Following Bagua Trigrams**.
+* **Full Celeste Assist Mode (`F2`)**:
+  * Stepped **Game Speed (`100%` down to `50%`)**, **Invincibility Shield** (hazard & bottomless pit bounce), **Air Dashes (`1 / 2 / Infinite`)**, **Infinite Stamina**, Hidden Block Outlines, Save States (`F5`/`F7`), and toggleable CRT Scanlines.
 * **Full 5-Biome Campaign + Arrange Mode (2nd Loop) + Multi-Ending ARG**:
   * Stage 0 Living Room CRT Intro → Stage 1 Overworld (Falling Coconut, Golden Bagua Kaizo Blocks, Misleading Arrow) → Stage 2 Ice Zone (Icicles + Arrange Mode Blizzards) → Stage 3 Volcano Cavern (Rising Lava) → Stage 4 Factory Lab (Sawblades, `液体痛み/敗者の涙/濃厚苦しみ` tanks, buried `1983` NES) → `CONTINUE? (Y/N)` Void Chamber → Stage 5 Corrupted Zo Core Boss (Heart Cable Pull + Glitch Silhouette Escape + Return Coconut Callback!).
   * Interactive Retro Manual (`Tab` / `M`) + External Companion Booklet (`manual/KAIZO_TRAP_MANUAL.md`).

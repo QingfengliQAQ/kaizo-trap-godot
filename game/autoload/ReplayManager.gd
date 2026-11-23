@@ -60,9 +60,9 @@ func get_action_just_released(action_name: String, prev_state: Dictionary) -> bo
 
 
 func sample_current_inputs() -> Dictionary:
-	var actions := ["move_left", "move_right", "move_up", "crouch", "jump", "slide", "interact"]
+	var actions: Array[String] = ["move_left", "move_right", "move_up", "crouch", "jump", "slide", "grab", "interact"]
 	var snap := {}
-	for a in actions:
+	for a: String in actions:
 		snap[a] = get_action_pressed(a)
 	if is_recording:
 		recorded_frames.append(snap)

@@ -1,0 +1,22 @@
+{
+  "model": "chatgpt-image-latest",
+  "style_prefix": "Crisp 16-bit SNES/Celeste pixel art, bold clean dark outlines, flat cel-shaded colors, NO anti-aliasing, NO gradients, NO text labels, strictly isolated sprites on an evenly spaced grid.",
+  "assets": [
+    {
+      "id": "kai_run8",
+      "out": "assets_raw/kai_run8_raw.png",
+      "size": "1536x1024",
+      "quality": "medium",
+      "background": "transparent",
+      "prompt": "A 4 columns by 2 rows sprite sheet grid (8 evenly spaced isolated sprites with generous transparent space, no grid lines drawn) showing a super-smooth 8-frame running animation cycle facing right of the EXACT SAME cute cartoon platformer heroine: bright orange-red hair in a bouncing ponytail with purple ribbon bow, big expressive eyes, pastel lavender sleeveless dress, pink-lavender sneakers. Strictly 8 progressive frames of a classic 8-frame pixel-art run cycle: Row 1: (1) right foot contact forward, (2) down squash weight shift, (3) passing pose right leg under body, (4) push-off high air stride. Row 2: (5) left foot contact forward, (6) down squash weight shift, (7) passing pose left leg under body, (8) push-off high air stride. Consistent size and proportions across all 8 frames."
+    },
+    {
+      "id": "celeste_objects",
+      "out": "assets_raw/celeste_objects_raw.png",
+      "size": "1024x1024",
+      "quality": "medium",
+      "background": "transparent",
+      "prompt": "A 4 columns by 2 rows icon/object grid (8 evenly spaced isolated 16-bit Celeste-style platformer game objects with generous transparent padding, no grid lines drawn): Row 1: (1) glowing emerald-green faceted floating diamond crystal with bright cyan core highlight, (2) faded hollow grey-green crystal outline, (3) industrial steel traffic-light zip-mover block with glowing green indicator light on top, (4) dark starry cosmic glitch dream block with deep indigo interior, neon cyan border, and tiny glowing purple-white stars inside. Row 2: (5) coiled silver-and-red bounce spring facing up, (6) golden glowing floating eight-trigram Bagua talisman jewel with small wings like a collectible strawberry, (7) cracked unstable icy-stone crumble block, (8) neon cyan directional holographic arrow pad."
+    }
+  ]
+}

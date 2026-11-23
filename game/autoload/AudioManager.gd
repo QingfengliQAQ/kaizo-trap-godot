@@ -45,7 +45,8 @@ func _preload_sfx() -> void:
 	var names: Array[String] = [
 		"jump", "wall_jump", "slide", "land", "kaizo_block",
 		"death_spike", "death_glitch", "death_coconut",
-		"key_get", "spring", "door", "laser", "secret", "manual_flip", "dos_beep"
+		"key_get", "spring", "door", "laser", "secret", "manual_flip", "dos_beep",
+		"dash", "crystal_refill", "zip_move", "dream_through"
 	]
 	for n: String in names:
 		var path: String = SFX_DIR + n + ".wav"

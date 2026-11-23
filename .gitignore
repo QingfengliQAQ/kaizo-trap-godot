@@ -3,8 +3,8 @@ reference/
 assets_raw/
 .omc/
 .omx/
-logs/
-scripts/
+/logs/
+/scripts/
 
 # Godot engine binary & cache
 tools/godot/

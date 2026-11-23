@@ -35,9 +35,11 @@ const MAX_SPLATS_PER_ROOM := 180
 # Celeste-style Assist Mode & TAS Practice toggles
 var assist_game_speed_pct: int = 100 # 100, 90, 80, 70, 60, 50
 var assist_invincible: bool = false
+var assist_infinite_stamina: bool = false
+var assist_air_dashes: int = 1 # 1 = normal, 2 = double dash, 99 = infinite air dashes
 var assist_show_hidden_blocks: bool = false
 var assist_show_input_display: bool = false
-var assist_crt_enabled: bool = true
+var assist_crt_enabled: bool = false # Default OFF for ultra-crisp 120Hz+ smoothness; toggleable in F2!
 
 # Quick Save-State (F5 / F7)
 var saved_state: Dictionary = {}
@@ -67,12 +69,43 @@ func set_difficulty(mode: DifficultyMode) -> void:
 	if mode == DifficultyMode.CLASSIC:
 		assist_game_speed_pct = 100
 		assist_invincible = false
+		assist_infinite_stamina = false
+		assist_air_dashes = 1
 		assist_show_hidden_blocks = false
 		Engine.time_scale = 1.0
 	else:
 		_apply_game_speed()
 	mode_changed.emit("CLASSIC" if mode == DifficultyMode.CLASSIC else "ASSIST")
 	assist_changed.emit()
+
+
+func toggle_infinite_stamina() -> bool:
+	if difficulty != DifficultyMode.ASSIST:
+		set_difficulty(DifficultyMode.ASSIST)
+	assist_infinite_stamina = not assist_infinite_stamina
+	assist_changed.emit()
+	return assist_infinite_stamina
+
+
+func cycle_air_dashes() -> int:
+	if difficulty != DifficultyMode.ASSIST:
+		set_difficulty(DifficultyMode.ASSIST)
+	match assist_air_dashes:
+		1: assist_air_dashes = 2
+		2: assist_air_dashes = 99
+		_: assist_air_dashes = 1
+	assist_changed.emit()
+	return assist_air_dashes
+
+
+func get_max_dashes() -> int:
+	if difficulty == DifficultyMode.ASSIST:
+		return assist_air_dashes
+	return 1
+
+
+func has_infinite_stamina() -> bool:
+	return difficulty == DifficultyMode.ASSIST and assist_infinite_stamina
 
 
 func cycle_game_speed(step_dir: int = 1) -> int:
