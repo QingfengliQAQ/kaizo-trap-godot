@@ -213,7 +213,9 @@ class SteelRailPlatform extends AnimatableBody2D:
 		draw_rect(stripe, Color("f5c842"))
 		for index: int in int(ceilf(stripe.size.x / 8.0)):
 			var x: float = stripe.position.x + float(index) * 8.0
-			draw_colored_polygon(PackedVector2Array([Vector2(x, stripe.position.y + 4), Vector2(x + 3, stripe.position.y), Vector2(minf(x + 6, stripe.end.x), stripe.position.y), Vector2(minf(x + 3, stripe.end.x), stripe.position.y + 4)]), Color("25292c"))
+			var w: float = minf(4.0, stripe.end.x - x)
+			if w >= 1.0:
+				draw_rect(Rect2(x, stripe.position.y, w, 4.0), Color("25292c"))
 		draw_line(deck.position + Vector2(1, 1), Vector2(deck.end.x - 1, deck.position.y + 1), Color("d7e2e6"), 1.0)
 		for side: float in [-1.0, 1.0]:
 			draw_circle(Vector2(side * (platform_size.x * 0.5 - 4), -2), 1.0, Color("e1e7e9"))
