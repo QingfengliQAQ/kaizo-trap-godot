@@ -1,0 +1,22 @@
+{
+  "model": "chatgpt-image-latest",
+  "style_prefix": "Crisp 16-bit SNES retro indie game pixel art, bold clean dark outlines, flat cel-shaded colors, NO anti-aliasing, NO gradients, NO blur, NO text labels, strictly isolated sprites on an evenly spaced grid.",
+  "assets": [
+    {
+      "id": "kaizo_props",
+      "out": "assets_raw/kaizo_props_raw.png",
+      "size": "1024x1024",
+      "quality": "medium",
+      "background": "transparent",
+      "prompt": "A 4 columns by 2 rows sprite grid (8 evenly spaced isolated 16-bit retro platformer objects for Kaizo Trap with generous transparent space, no grid lines drawn): Row 1: (1) glowing golden-yellow round Bagua talisman orb with dark trigram bars inside and bright gold aura, (2) faded hollow golden outline ring, (3) industrial steel horizontal moving platform with yellow-and-black hazard stripes on sides and glowing amber core, (4) dark terminal-green glitching matrix code block with bright cyan-green digital scanlines inside. Row 2: (5) tropical green palm tree crown leaves cluster, (6) metallic coiled red-and-silver bounce spring facing up, (7) silver mechanical wind-fan vent blowing glowing white air streaks, (8) golden winged Bagua emblem charm with small retro pixel wings."
+    },
+    {
+      "id": "zo_sheet",
+      "out": "assets_raw/zo_sheet_raw.png",
+      "size": "1024x1024",
+      "quality": "medium",
+      "background": "transparent",
+      "prompt": "A 4 columns by 3 rows sprite sheet grid (12 evenly spaced separate sprites with plenty of transparent padding, no grid lines drawn) of the EXACT SAME cute cartoon platformer young man facing right: spiky reddish-brown hair, expressive eyes, sky-blue t-shirt, grey-blue pants, white sneakers. Strictly 4 columns x 3 rows matching a platformer moveset: Row 1: (1) standing idle, (2) running stride A, (3) running stride B, (4) sprint leaning forward. Row 2: (5) jumping upward, (6) falling downward, (7) sliding/clinging on wall, (8) crouching low. Row 3: (9) fast dash pose leaning horizontal, (10) kicking forward, (11) shocked comedic recoil pose, (12) happy victory pose arms raised."
+    }
+  ]
+}

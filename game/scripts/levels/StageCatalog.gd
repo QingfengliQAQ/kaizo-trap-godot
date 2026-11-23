@@ -1,36 +1,42 @@
 class_name StageCatalog
 extends RefCounted
-## Full 10-Room Celeste-Style Sight-Readable Flow Campaign (320x180 = 20x11.25 tiles).
-## Design Philosophy (Celeste > I Wanna):
-##   - 100% sight-readable layouts — ZERO blind cheap pixel traps!
-##   - Teaches & combines: 8-Way Dash, Green Dash Crystals, Wall Climb & Wall Bounce,
-##     Traffic Zip-Mover Blocks, Starry Glitch Dream Blocks, and Omni-Springs!
-##   - Optional Bagua Trigrams act as Celeste Strawberries (follow Kai until landing on safe floor!).
-##   - Preserves iconic Kaizo Trap story beats, biomes, playful nods, and full ZhugeDOS ARG!
+## Full 14-Room Pure Kaizo Trap (孔明の罠) Campaign with Celeste-Grade WYSIWYG Fairness!
+## Philosophy:
+##   - 100% AUTHENTIC Kaizo Trap visual world, lore, props & mechanics
+##     (Golden Bagua Resonance Orbs, Ammonite Shells, Electric Spikes, Steel Rail Platforms,
+##      ZhugeDOS Hex Code Curtains, Wind Gusts, Japanese Factory Tanks, 1983 NES, Heart Cable Pod).
+##   - 100% WYSIWYG ("所见即所得") fair sight-readable layouts:
+##     ZERO cheap blind invisible traps! Every hazard, drop sightline, and path is crystal clear.
 
 static func get_room_spec(room_id: String) -> Dictionary:
 	match room_id:
 		"room_00": return _room_00_living_room()
-		"room_01": return _room_01_forsaken_overworld()
-		"room_02": return _room_02_zip_canyon()
-		"room_03": return _room_03_dream_site()
-		"room_04": return _room_04_frozen_ridge()
-		"room_05": return _room_05_molten_core()
-		"room_06": return _room_06_signal_factory()
-		"room_07": return _room_07_void_yn()
-		"room_08": return _room_08_corrupted_core()
-		"room_09": return _room_09_summit_escape()
-		_: return _room_01_forsaken_overworld()
+		"room_01": return _room_01_assembly_vortex()
+		"room_02": return _room_02_palm_overworld()
+		"room_03": return _room_03_electric_slide()
+		"room_04": return _room_04_shell_shaft()
+		"room_05": return _room_05_gale_peaks()
+		"room_06": return _room_06_frozen_cavern()
+		"room_07": return _room_07_basalt_bridge()
+		"room_08": return _room_08_lava_ascent()
+		"room_09": return _room_09_liquid_pain_lab()
+		"room_10": return _room_10_thunder_conduit()
+		"room_11": return _room_11_void_yn()
+		"room_12": return _room_12_corrupted_core()
+		"room_13": return _room_13_glitch_escape()
+		_: return _room_00_living_room()
 
 
 static func get_all_room_ids() -> Array[String]:
 	return [
 		"room_00", "room_01", "room_02", "room_03", "room_04",
-		"room_05", "room_06", "room_07", "room_08", "room_09"
+		"room_05", "room_06", "room_07", "room_08", "room_09",
+		"room_10", "room_11", "room_12", "room_13"
 	]
 
 
 static func _room_00_living_room() -> Dictionary:
+	# Stage 0-0: Living Room Intro — Zhuge Liang portrait, Kaizo Mario & Y/N paintings, NES & CRT TV!
 	return {
 		"id": "room_00",
 		"title": "0-0 LIVING ROOM",
@@ -43,237 +49,348 @@ static func _room_00_living_room() -> Dictionary:
 			[19, 0, 1, 9],
 		],
 		"signs": [
-			{"pos": Vector2(118, 132), "text": "DASH ->"},
+			{"pos": Vector2(118, 132), "text": "ENTER TV"},
 		],
 		"goal": {"x": 252.0, "y": 144.0, "next": "room_01", "fakeout": false, "is_tv": true},
 	}
 
 
-static func _room_01_forsaken_overworld() -> Dictionary:
-	# Celeste Ch.1 inspired opener: clean sight-readable jumps + floating Dash Crystal across scenic chasm,
-	# optional elevated Earth Bagua Strawberry challenge, and one clearly telegraphed playful coconut!
+static func _room_01_assembly_vortex() -> Dictionary:
+	# Stage 0-1: Authentic 1:23 Falling Assembly Code Vortex!
+	# Navigate cleanly through scrolling 68000/6502 code curtains and visible Bagua orbs into Stage 1!
 	return {
 		"id": "room_01",
-		"title": "1-1 OVERWORLD FLOW",
-		"biome": "overworld",
+		"title": "0-1 CODE VORTEX",
+		"biome": "code_vortex",
 		"bgm": "overworld",
-		"spawn": Vector2(24, 144),
+		"spawn": Vector2(40, 56),
 		"solids": [
-			[0, 9, 6, 3],     # Generous starting terrace
-			[9, 8, 4, 4],     # Mid climbable outcrop (jump or dash across!)
-			[15, 7, 5, 5],    # Elevated goal terrace (use Dash Crystal!)
-			[10, 4, 2, 1],    # Optional Strawberry perch for Earth Bagua
-			[0, 0, 1, 9],
+			[1, 4, 4, 1],
+			[8, 6, 4, 1],
+			[14, 9, 6, 3],
+			[0, 0, 1, 11],
 		],
-		"dash_crystals": [
-			{"x": 120.0, "y": 112.0}, # Teaches midair Dash Refill cleanly!
-			{"x": 224.0, "y": 96.0},
+		"hex_curtains": [
+			{"x": 168.0, "y": 82.0, "w": 36.0, "h": 40.0},
 		],
-		"coconuts": [
-			{"x": 74.0, "y": 46.0, "ground_y": 140.0, "range": 14.0}, # Playful visible homage
+		"bagua_orbs": [
+			{"x": 110.0, "y": 78.0},
+			{"x": 218.0, "y": 106.0},
 		],
-		"dir_springs": [
-			{"x": 168.0, "y": 122.0, "dir": "up"}, # Launches easily to Earth Bagua or goal!
-		],
-		"baguas": [
-			{"id": "earth", "x": 176.0, "y": 48.0}, # Optional Celeste Strawberry challenge!
-		],
-		"arrange_kaizo_blocks": [
-			[14, 5], # Only in optional 2nd Loop Arrange Mode!
+		"spikes": [
+			{"tx": 8, "ty": 5, "w": 1, "dir": "up"},
 		],
 		"signs": [
-			{"pos": Vector2(44, 132), "text": "X:DASH"},
+			{"pos": Vector2(64, 52), "text": "X:DASH"},
 		],
-		"goal": {"x": 292.0, "y": 112.0, "next": "room_02", "fakeout": false},
+		"goal": {"x": 292.0, "y": 144.0, "next": "room_02", "fakeout": false},
 	}
 
 
-static func _room_02_zip_canyon() -> Dictionary:
-	# Celeste Ch.1 Traffic Zip-Mover Canyon! Grab/ride the zip-mover to fling across the valley,
-	# plus a safe low dash-tunnel & optional hidden lower alcove for the Silver Key + Lake Bagua!
+static func _room_02_palm_overworld() -> Dictionary:
+	# Stage 1-1: Tropical Palm Overworld — 100% sight-readable flow!
+	# Visible palm tree with telegraphed shaking coconut + Golden Bagua Orbs + optional Earth Bagua!
 	return {
 		"id": "room_02",
-		"title": "1-2 ZIP CANYON",
-		"biome": "overworld",
-		"bgm": "overworld",
-		"spawn": Vector2(24, 144),
-		"solids": [
-			[0, 9, 6, 3],     # Left launch ledge
-			[3, 6, 3, 2],     # Low dash/crouch arch (clean, NO spikes inside!)
-			[14, 7, 6, 5],    # Right receiving cliff
-			[7, 10, 5, 2],    # Optional secret lower platform with Silver Key & Lake Bagua
-			[0, 0, 1, 9],
-		],
-		"zip_movers": [
-			{"x": 112.0, "y": 128.0, "w": 32.0, "h": 16.0, "dx": 82.0, "dy": -24.0},
-		],
-		"dash_crystals": [
-			{"x": 196.0, "y": 84.0},
-		],
-		"dir_springs": [
-			{"x": 182.0, "y": 154.0, "dir": "up"}, # Clean return bounce out of secret key alcove!
-		],
-		"keys": [
-			{"id": "stage1_key", "x": 134.0, "y": 148.0},
-		],
-		"baguas": [
-			{"id": "lake", "x": 156.0, "y": 148.0},
-		],
-		"signs": [
-			{"pos": Vector2(80, 132), "text": "RIDE!"},
-		],
-		"goal": {"x": 292.0, "y": 112.0, "next": "room_03", "fakeout": false},
-	}
-
-
-static func _room_03_dream_site() -> Dictionary:
-	# Celeste Ch.2 Old Site homage! Introduces Starry Glitch Dream Blocks:
-	# Dash STRAIGHT THROUGH corrupted code blocks to burst out with bonus momentum!
-	# Includes optional Ammonite Shell toy + 7M01S Key Block on upper secret shelf!
-	return {
-		"id": "room_03",
-		"title": "1-3 GLITCH DREAM",
+		"title": "1-1 PALM OVERWORLD",
 		"biome": "overworld",
 		"bgm": "overworld",
 		"spawn": Vector2(24, 144),
 		"solids": [
 			[0, 9, 6, 3],
-			[15, 8, 5, 4],
-			[1, 4, 4, 1],     # Upper secret shelf holding 7M01S Key Block
+			[9, 8, 4, 4],
+			[15, 7, 5, 5],
+			[10, 4, 2, 1],
 			[0, 0, 1, 9],
 		],
-		"dream_blocks": [
-			{"x": 104.0, "y": 98.0, "w": 48.0, "h": 40.0},
-			{"x": 176.0, "y": 76.0, "w": 48.0, "h": 44.0},
+		"bagua_orbs": [
+			{"x": 122.0, "y": 110.0},
+			{"x": 222.0, "y": 96.0},
 		],
-		"dash_crystals": [
-			{"x": 86.0, "y": 112.0},
-			{"x": 164.0, "y": 92.0},
-			{"x": 88.0, "y": 56.0}, # Optional crystal leading left to 7M01S Key Block!
+		"droppers": [
+			{"kind": "coconut", "x": 74.0, "y": 46.0, "ground_y": 140.0, "range": 32.0, "telegraph": 0.36},
 		],
-		"shells": [
-			[56.0, 136.0], # Optional Kaizo Shell toy for stylish clears
+		"dir_springs": [
+			{"x": 170.0, "y": 122.0, "dir": "up"},
 		],
-		"key_blocks": [
-			{"x": 46.0, "y": 56.0},
+		"baguas": [
+			{"id": "earth", "x": 176.0, "y": 46.0},
 		],
 		"signs": [
-			{"pos": Vector2(72, 132), "text": "DASH IN"},
+			{"pos": Vector2(44, 132), "text": "RUN ->"},
 		],
-		"goal": {"x": 292.0, "y": 128.0, "next": "room_04", "fakeout": false},
+		"goal": {"x": 292.0, "y": 112.0, "next": "room_03", "fakeout": false},
 	}
 
 
-static func _room_04_frozen_ridge() -> Dictionary:
-	# Celeste Ch.1/4 Frozen Mountain Climb! Wall-Climb, Wall-Bounce, Dash Crystals & Zip Mover
-	# with rhythmic telegraphed icicles & optional Wind/Water Bagua Followers!
+static func _room_03_electric_slide() -> Dictionary:
+	# Stage 1-2: Sight-readable Low Slide Arch + Crumble Bridge + Honest Secret Path below 'GO ->' sign!
+	return {
+		"id": "room_03",
+		"title": "1-2 ELECTRIC SLIDE",
+		"biome": "overworld",
+		"bgm": "overworld",
+		"spawn": Vector2(24, 144),
+		"solids": [
+			[0, 9, 8, 3],
+			[4, 6, 3, 2],     # Clean low slide/dash arch (no unfair ceiling spikes!)
+			[12, 8, 3, 4],
+			[16, 7, 4, 5],
+			[8, 11, 6, 1],    # Visible secret lower floor holding Silver Key & Lake Bagua!
+			[0, 0, 1, 9],
+		],
+		"crumbles": [[8, 9], [9, 9], [10, 9]],
+		"bagua_orbs": [
+			{"x": 182.0, "y": 96.0},
+		],
+		"dir_springs": [
+			{"x": 212.0, "y": 168.0, "dir": "up"}, # Fair bounce out of secret key alcove!
+		],
+		"keys": [{"id": "stage1_key", "x": 164.0, "y": 164.0}],
+		"baguas": [{"id": "lake", "x": 186.0, "y": 164.0}],
+		"signs": [
+			{"pos": Vector2(204, 116), "text": "KEY v"},
+		],
+		"goal": {"x": 292.0, "y": 112.0, "next": "room_04", "fakeout": false},
+	}
+
+
+static func _room_04_shell_shaft() -> Dictionary:
+	# Stage 1-3: Canonical Ammonite Shell Jump & Wall-Climb Shaft (ref_25.png) + 7M01S Key Block!
+	# Both Shell-Jump AND clean Wall-Climb/Spring paths work fairly!
 	return {
 		"id": "room_04",
-		"title": "2-1 FROZEN RIDGE",
+		"title": "1-3 SHELL SHAFT",
+		"biome": "overworld",
+		"bgm": "overworld",
+		"spawn": Vector2(24, 144),
+		"solids": [
+			[0, 9, 8, 3],
+			[8, 4, 1, 8],     # Climbable shaft wall left
+			[13, 2, 1, 8],    # Climbable shaft wall right
+			[14, 8, 6, 4],
+			[1, 4, 4, 1],     # Upper shelf holding 7M01S Key Block
+			[0, 0, 1, 9],
+		],
+		"spikes": [
+			{"tx": 9, "ty": 10, "w": 4, "dir": "up"},
+		],
+		"dir_springs": [
+			{"x": 116.0, "y": 138.0, "dir": "up"},
+		],
+		"bagua_orbs": [
+			{"x": 176.0, "y": 82.0},
+			{"x": 96.0, "y": 56.0},
+		],
+		"shells": [
+			[68.0, 136.0], # Coiled metallic Ammonite Shell (Up+C / Right+C)
+		],
+		"key_blocks": [
+			{"x": 46.0, "y": 56.0}, # 7M01S Key Block (touch w/ Key OR Right-Click CRT Inspect!)
+		],
+		"signs": [
+			{"pos": Vector2(46, 132), "text": "SHELL"},
+		],
+		"goal": {"x": 292.0, "y": 128.0, "next": "room_05", "fakeout": false},
+	}
+
+
+static func _room_05_gale_peaks() -> Dictionary:
+	# Stage 2-1: Canonical Wind Trigram (☴) Gale Peaks!
+	# Visible flowing wind gusts carry Kai's jumps & dashes across misty alpine chasms!
+	return {
+		"id": "room_05",
+		"title": "2-1 GALE PEAKS",
 		"biome": "ice",
 		"bgm": "ice_factory",
 		"spawn": Vector2(24, 144),
 		"solids": [
 			[0, 9, 5, 3],
-			[7, 4, 2, 7],     # Climbable vertical ice pillar (Wall-Bounce / Climb!)
-			[12, 6, 2, 5],    # Second vertical climb pillar
-			[16, 5, 4, 7],    # High mountain summit exit
+			[10, 7, 3, 5],
+			[16, 6, 4, 6],
 			[0, 0, 1, 9],
 		],
-		"dash_crystals": [
-			{"x": 92.0, "y": 106.0},
-			{"x": 168.0, "y": 78.0},
-			{"x": 236.0, "y": 66.0},
+		"wind_zones": [
+			{"x": 80.0, "y": 52.0, "w": 84.0, "h": 92.0, "ax": 175.0, "ay": -210.0},
+			{"x": 196.0, "y": 40.0, "w": 72.0, "h": 88.0, "ax": 185.0, "ay": -180.0},
 		],
-		"dir_springs": [
-			{"x": 148.0, "y": 104.0, "dir": "right"}, # Wall spring flings Kai cleanly to pillar 2!
-		],
-		"icicles": [
-			{"x": 168.0, "y": 30.0, "ground_y": 152.0},
-		],
-		"crumbles": [
-			[5, 9],
-			[6, 9],
+		"bagua_orbs": [
+			{"x": 120.0, "y": 98.0},
+			{"x": 230.0, "y": 78.0},
 		],
 		"baguas": [
-			{"id": "wind", "x": 124.0, "y": 46.0},
-			{"id": "water", "x": 208.0, "y": 52.0},
+			{"id": "wind", "x": 176.0, "y": 52.0},
 		],
-		"goal": {"x": 292.0, "y": 80.0, "next": "room_05", "fakeout": false},
-	}
-
-
-static func _room_05_molten_core() -> Dictionary:
-	# Celeste Ch.8 Core flow: Dash Crystal + Glitch Dream Block chain high above rhythmic rising lava,
-	# with generous safe resting obsidian islands!
-	return {
-		"id": "room_05",
-		"title": "3-1 MOLTEN CORE",
-		"biome": "volcano",
-		"bgm": "ice_factory",
-		"spawn": Vector2(24, 128),
-		"solids": [
-			[0, 8, 4, 4],
-			[9, 7, 3, 2],     # Mid obsidian rest island
-			[16, 6, 4, 6],    # High exit cliff
-			[0, 0, 1, 8],
-		],
-		"dream_blocks": [
-			{"x": 86.0, "y": 84.0, "w": 42.0, "h": 34.0},
-			{"x": 204.0, "y": 68.0, "w": 40.0, "h": 36.0},
-		],
-		"dash_crystals": [
-			{"x": 72.0, "y": 104.0},
-			{"x": 184.0, "y": 84.0},
-		],
-		"lava": {"base_y": 168.0, "amplitude": 26.0, "speed": 1.35},
-		"baguas": [
-			{"id": "fire", "x": 168.0, "y": 46.0},
+		"signs": [
+			{"pos": Vector2(54, 132), "text": "WIND^"},
 		],
 		"goal": {"x": 292.0, "y": 96.0, "next": "room_06", "fakeout": false},
 	}
 
 
-static func _room_06_signal_factory() -> Dictionary:
-	# Celeste Industrial Flow: Chained Traffic Zip-Movers + Climb Wall weaving cleanly around
-	# clearly readable patrolling sawblades, featuring Japanese tanks (液体痛み/敗者の涙/濃厚苦しみ) & 1983 NES!
+static func _room_06_frozen_cavern() -> Dictionary:
+	# Stage 2-2: Frozen Cavern — Slippery ice, climbable pillars, telegraphed shaking icicles,
+	# Water Trigram (☵), and Arrange Mode atmospheric Blizzard!
 	return {
 		"id": "room_06",
-		"title": "4-1 SIGNAL FACTORY",
+		"title": "2-2 FROZEN CAVERN",
+		"biome": "ice",
+		"bgm": "ice_factory",
+		"spawn": Vector2(24, 144),
+		"solids": [
+			[0, 9, 5, 3],
+			[7, 5, 2, 6],
+			[12, 6, 2, 5],
+			[16, 5, 4, 7],
+			[0, 0, 1, 9],
+		],
+		"droppers": [
+			{"kind": "icicle", "x": 168.0, "y": 32.0, "ground_y": 156.0, "range": 34.0, "telegraph": 0.36},
+		],
+		"dir_springs": [
+			{"x": 148.0, "y": 106.0, "dir": "right"},
+		],
+		"bagua_orbs": [
+			{"x": 92.0, "y": 104.0},
+			{"x": 236.0, "y": 68.0},
+		],
+		"crumbles": [[5, 9], [6, 9]],
+		"baguas": [
+			{"id": "water", "x": 208.0, "y": 52.0},
+		],
+		"goal": {"x": 292.0, "y": 80.0, "next": "room_07", "fakeout": false},
+	}
+
+
+static func _room_07_basalt_bridge() -> Dictionary:
+	# Stage 3-1: Volcanic Basalt Bridge — Crumble obsidian + Bagua Orbs over rhythmic lava tide!
+	return {
+		"id": "room_07",
+		"title": "3-1 BASALT BRIDGE",
+		"biome": "volcano",
+		"bgm": "ice_factory",
+		"spawn": Vector2(24, 128),
+		"solids": [
+			[0, 8, 4, 4],
+			[8, 7, 3, 2],
+			[16, 6, 4, 6],
+			[0, 0, 1, 8],
+		],
+		"crumbles": [[4, 8], [5, 8], [12, 7], [13, 7]],
+		"bagua_orbs": [
+			{"x": 104.0, "y": 96.0},
+			{"x": 220.0, "y": 82.0},
+		],
+		"lava": {"base_y": 168.0, "amplitude": 26.0, "speed": 1.35},
+		"baguas": [
+			{"id": "fire", "x": 152.0, "y": 50.0},
+		],
+		"goal": {"x": 292.0, "y": 96.0, "next": "room_08", "fakeout": false},
+	}
+
+
+static func _room_08_lava_ascent() -> Dictionary:
+	# Stage 3-2: Vertical Volcanic Climb — Fair wall-climb + directional springs over lava!
+	return {
+		"id": "room_08",
+		"title": "3-2 LAVA ASCENT",
+		"biome": "volcano",
+		"bgm": "ice_factory",
+		"spawn": Vector2(28, 128),
+		"solids": [
+			[0, 8, 5, 4],
+			[7, 4, 2, 6],
+			[12, 3, 2, 7],
+			[16, 4, 4, 8],
+			[0, 0, 1, 8],
+		],
+		"dir_springs": [
+			{"x": 64.0, "y": 122.0, "dir": "up"},
+			{"x": 148.0, "y": 92.0, "dir": "right"},
+		],
+		"bagua_orbs": [
+			{"x": 176.0, "y": 70.0},
+			{"x": 236.0, "y": 54.0},
+		],
+		"lava": {"base_y": 170.0, "amplitude": 28.0, "speed": 1.45},
+		"goal": {"x": 292.0, "y": 64.0, "next": "room_09", "fakeout": false},
+	}
+
+
+static func _room_09_liquid_pain_lab() -> Dictionary:
+	# Stage 4-1: Mechanical Factory Lab — Industrial Steel Rail Platforms, Sawblades,
+	# Japanese Containment Tanks (液体痛み / 敗者の涙 / 濃厚苦しみ), buried 1983 NES & Mountain Bagua!
+	return {
+		"id": "room_09",
+		"title": "4-1 LIQUID PAIN LAB",
 		"biome": "factory",
 		"bgm": "ice_factory",
 		"spawn": Vector2(24, 144),
 		"solids": [
 			[0, 9, 5, 3],
 			[15, 8, 5, 4],
-			[3, 4, 3, 1],     # High Mountain Bagua perch
+			[3, 4, 3, 1],
 			[0, 0, 1, 9],
 		],
-		"zip_movers": [
-			{"x": 92.0, "y": 124.0, "w": 32.0, "h": 16.0, "dx": 72.0, "dy": -30.0},
-			{"x": 192.0, "y": 116.0, "w": 32.0, "h": 16.0, "dx": 42.0, "dy": -12.0},
+		"steel_platforms": [
+			{"x": 92.0, "y": 126.0, "w": 36.0, "h": 12.0, "dx": 70.0, "dy": -26.0, "speed": 1.15, "trigger": true},
+			{"x": 192.0, "y": 116.0, "w": 36.0, "h": 12.0, "dx": 40.0, "dy": -10.0, "speed": 1.0, "trigger": false},
 		],
-		"dash_crystals": [
+		"bagua_orbs": [
+			{"x": 76.0, "y": 82.0},
 			{"x": 176.0, "y": 78.0},
-			{"x": 76.0, "y": 78.0},
 		],
 		"sawblades": [
-			{"x": 146.0, "y": 134.0, "dx": 48.0, "dy": 0.0, "speed": 1.8},
+			{"x": 146.0, "y": 138.0, "dx": 48.0, "dy": 0.0, "speed": 1.75},
 		],
 		"baguas": [
 			{"id": "mountain", "x": 72.0, "y": 46.0},
-			{"id": "thunder", "x": 212.0, "y": 64.0},
 		],
 		"signs": [
 			{"pos": Vector2(54, 132), "text": "1983"},
 		],
-		"goal": {"x": 292.0, "y": 128.0, "next": "room_07", "fakeout": false},
+		"goal": {"x": 292.0, "y": 128.0, "next": "room_10", "fakeout": false},
 	}
 
 
-static func _room_07_void_yn() -> Dictionary:
+static func _room_10_thunder_conduit() -> Dictionary:
+	# Stage 4-2: Electric Conduit & ZhugeDOS 57/77 Hex Code Curtains + Thunder Bagua (☳)!
 	return {
-		"id": "room_07",
+		"id": "room_10",
+		"title": "4-2 THUNDER CONDUIT",
+		"biome": "factory",
+		"bgm": "ice_factory",
+		"spawn": Vector2(24, 144),
+		"solids": [
+			[0, 9, 5, 3],
+			[15, 7, 5, 5],
+			[0, 0, 1, 9],
+		],
+		"hex_curtains": [
+			{"x": 100.0, "y": 96.0, "w": 42.0, "h": 38.0},
+			{"x": 176.0, "y": 74.0, "w": 42.0, "h": 38.0},
+		],
+		"bagua_orbs": [
+			{"x": 86.0, "y": 114.0},
+			{"x": 162.0, "y": 94.0},
+		],
+		"spikes": [
+			{"tx": 5, "ty": 10, "w": 10, "dir": "up"},
+		],
+		"baguas": [
+			{"id": "thunder", "x": 210.0, "y": 48.0},
+		],
+		"signs": [
+			{"pos": Vector2(56, 132), "text": "57 77"},
+		],
+		"goal": {"x": 292.0, "y": 112.0, "next": "room_11", "fakeout": false},
+	}
+
+
+static func _room_11_void_yn() -> Dictionary:
+	# Void Intermission: Iconic CONTINUE? ☰ 10 ☰ with Air Man katakana & Red Y / Blue N Doors!
+	return {
+		"id": "room_11",
 		"title": "CONTINUE? (Y/N)",
 		"biome": "void_yn",
 		"bgm": "core_boss",
@@ -284,48 +401,48 @@ static func _room_07_void_yn() -> Dictionary:
 			[19, 0, 1, 9],
 		],
 		"baguas": [{"id": "heaven", "x": 160.0, "y": 74.0}],
-		"goal": {"x": 90.0, "y": 144.0, "next": "room_08", "fakeout": false},
+		"goal": {"x": 90.0, "y": 144.0, "next": "room_12", "fakeout": false},
 		"n_door": {"x": 230.0, "y": 124.0},
 	}
 
 
-static func _room_08_corrupted_core() -> Dictionary:
-	# Celeste Ch.6 Badeline-inspired Boss Arena:
-	# Chain Glitch Dream Blocks & Dash Crystals upward while weaving between rhythmic white beams
-	# to reach Zo's Heart Cable Pod (upper right) and shatter the Core!
+static func _room_12_corrupted_core() -> Dictionary:
+	# Stage 5-1: Corrupted Zo Core Boss!
+	# Dash through ZhugeDOS Hex Code Curtains & Golden Bagua Orbs dodging telegraphed lasers
+	# to pull Zo's Heart Cable Pod (upper right) -> triggers Glitch Escape!
 	return {
-		"id": "room_08",
-		"title": "5-1 CORE CLIMAX",
+		"id": "room_12",
+		"title": "5-1 CORRUPTED CORE",
 		"biome": "core",
 		"bgm": "core_boss",
 		"spawn": Vector2(24, 144),
 		"solids": [
 			[0, 9, 20, 3],
-			[14, 5, 4, 1],    # Upper Heart Cable Pod terrace
+			[14, 5, 4, 1],
 			[0, 0, 1, 9],
 			[19, 0, 1, 9],
 		],
-		"dream_blocks": [
-			{"x": 72.0, "y": 98.0, "w": 42.0, "h": 34.0},
-			{"x": 144.0, "y": 72.0, "w": 42.0, "h": 34.0},
+		"hex_curtains": [
+			{"x": 72.0, "y": 98.0, "w": 40.0, "h": 34.0},
+			{"x": 144.0, "y": 72.0, "w": 40.0, "h": 34.0},
 		],
-		"dash_crystals": [
+		"bagua_orbs": [
 			{"x": 58.0, "y": 116.0},
 			{"x": 128.0, "y": 88.0},
 			{"x": 204.0, "y": 70.0},
 		],
 		"heart_pod": {"x": 248.0, "y": 64.0},
-		"goal": {"x": 286.0, "y": 144.0, "next": "room_09", "fakeout": true},
+		"goal": {"x": 286.0, "y": 144.0, "next": "room_13", "fakeout": true},
 	}
 
 
-static func _room_09_summit_escape() -> Dictionary:
-	# Celeste Summit-style High-Speed Glitch Escape!
-	# Follow Zo's cyan ghost silhouette from RIGHT -> LEFT chaining Dream Blocks & Dash Crystals
-	# back through Stage 1, dodging the iconic final callback Coconut into the Blue Escape Vortex!
+static func _room_13_glitch_escape() -> Dictionary:
+	# Stage 5-2: Glitch Escape back through Stage 1 (RIGHT -> LEFT)!
+	# Follow Zo's cyan silhouette through Hex Code Curtains & Golden Bagua Orbs,
+	# dodge the final telegraphed Return Coconut (6:53 callback!), leap into the Blue Vortex!
 	return {
-		"id": "room_09",
-		"title": "5-2 SUMMIT ESCAPE",
+		"id": "room_13",
+		"title": "5-2 GLITCH ESCAPE",
 		"biome": "glitch_escape",
 		"bgm": "core_boss",
 		"spawn": Vector2(292, 144),
@@ -334,17 +451,17 @@ static func _room_09_summit_escape() -> Dictionary:
 			[15, 9, 5, 3],
 			[19, 0, 1, 9],
 		],
-		"dream_blocks": [
-			{"x": 182.0, "y": 96.0, "w": 44.0, "h": 36.0},
-			{"x": 112.0, "y": 96.0, "w": 44.0, "h": 36.0},
+		"hex_curtains": [
+			{"x": 182.0, "y": 96.0, "w": 40.0, "h": 36.0},
+			{"x": 112.0, "y": 96.0, "w": 40.0, "h": 36.0},
 		],
-		"dash_crystals": [
+		"bagua_orbs": [
 			{"x": 244.0, "y": 114.0},
 			{"x": 168.0, "y": 112.0},
 			{"x": 96.0, "y": 114.0},
 		],
-		"coconuts": [
-			{"x": 68.0, "y": 46.0, "ground_y": 140.0, "range": 15.0},
+		"droppers": [
+			{"kind": "coconut", "x": 68.0, "y": 46.0, "ground_y": 140.0, "range": 34.0, "telegraph": 0.36},
 		],
 		"goal": {"x": 24.0, "y": 144.0, "next": "__TRUE_ENDING__", "fakeout": false, "is_vortex": true},
 	}

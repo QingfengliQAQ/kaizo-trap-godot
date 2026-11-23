@@ -114,6 +114,9 @@ var wall_check_left: RayCast2D
 var wall_check_right: RayCast2D
 var has_sheet_texture: bool = false
 var has_run8_texture: bool = false
+var kai_sheet_tex: Texture2D = null
+var zo_sheet_tex: Texture2D = null
+var active_char_id: String = "kai"
 
 
 func _ready() -> void:
@@ -179,13 +182,9 @@ func _make_ray(origin: Vector2, target: Vector2) -> RayCast2D:
 
 func _load_character_sheets() -> void:
 	if ResourceLoader.exists("res://assets/sprites/kai_sheet.png"):
-		var tex: Texture2D = load("res://assets/sprites/kai_sheet.png")
-		if tex:
-			sprite.texture = tex
-			sprite.hframes = 4
-			sprite.vframes = 3
-			sprite.frame = 0
-			has_sheet_texture = true
+		kai_sheet_tex = load("res://assets/sprites/kai_sheet.png")
+	if ResourceLoader.exists("res://assets/sprites/zo_sheet.png"):
+		zo_sheet_tex = load("res://assets/sprites/zo_sheet.png")
 	if ResourceLoader.exists("res://assets/sprites/kai_run8.png"):
 		var rtex: Texture2D = load("res://assets/sprites/kai_run8.png")
 		if rtex:
@@ -194,6 +193,28 @@ func _load_character_sheets() -> void:
 			run_sprite.vframes = 2
 			run_sprite.frame = 0
 			has_run8_texture = true
+	set_character(GameState.playable_character)
+
+
+func set_character(char_id: String) -> void:
+	active_char_id = char_id
+	var chosen: Texture2D = zo_sheet_tex if (char_id == "zo" and zo_sheet_tex != null) else kai_sheet_tex
+	if chosen != null:
+		sprite.texture = chosen
+		sprite.hframes = 4
+		sprite.vframes = 3
+		sprite.frame = 0
+		has_sheet_texture = true
+	if hair != null:
+		hair.visible = (active_char_id != "zo")
+
+
+func apply_wind_force(wind_accel: Vector2, delta: float) -> void:
+	if is_dead or is_dashing or is_dream_dashing:
+		return
+	velocity += wind_accel * delta
+	velocity.x = clampf(velocity.x, -260.0, 260.0)
+	velocity.y = clampf(velocity.y, -280.0, fast_fall_speed)
 
 
 func set_spawn(pos: Vector2) -> void:
@@ -793,7 +814,7 @@ func _update_animation(move_dir: float) -> void:
 		frame_idx = 7
 	elif absf(velocity.x) > 10.0 or move_dir != 0.0:
 		st = "run"
-		if has_run8_texture:
+		if has_run8_texture and active_char_id == "kai":
 			use_run8 = true
 			var speed_rate: float = clampf(absf(velocity.x) / max_run_speed, 0.55, 1.6) * 16.0
 			frame_idx = int(anim_clock * speed_rate) % 8

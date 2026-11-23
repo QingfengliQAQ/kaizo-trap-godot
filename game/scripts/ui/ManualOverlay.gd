@@ -30,8 +30,8 @@ const PAGES := [
 		"show_701": false
 	},
 	{
-		"header": "03 / CELESTE FLOW TECHNIQUES",
-		"body": "[color=#1c223e][b]MASTERING THE FLOW[/b]\n\n1. [color=#e8562a]WAVE / SUPER DASH[/color]: Dash diagonally into ground + Jump for a huge speed burst & dash refill!\n2. [color=#e8562a]WALL BOUNCE[/color]: Dash UP beside a wall + Jump for massive vertical height!\n3. [color=#e8562a]GLITCH DREAM BLOCKS[/color]: Dash STRAIGHT INTO starry dark code blocks to phase through!\n4. [color=#e8562a]DASH CRYSTALS & ZIP BLOCKS[/color]: Green crystals refill Dash+Stamina; Zip Blocks fling you![/color]",
+		"header": "03 / KAIZO FLOW TECHNIQUES",
+		"body": "[color=#1c223e][b]FAIR WYSIWYG PRECISION PLAY[/b]\n\n1. [color=#e8562a]GOLDEN BAGUA ORBS[/color]: Touch gleaming Bagua orbs in midair to refill Dash + Stamina!\n2. [color=#e8562a]HEX CODE CURTAINS[/color]: Dash straight through green ZhugeDOS code streams (57/77)!\n3. [color=#e8562a]WIND GUSTS & RAILS[/color]: Ride Gale Peak wind currents & steel factory rail platforms!\n4. [color=#e8562a]WAVE DASH / WALL BOUNCE[/color]: Chain dashes, wall kicks & Ammonite Shell Jumps![/color]",
 		"show_art": false,
 		"show_701": false
 	},

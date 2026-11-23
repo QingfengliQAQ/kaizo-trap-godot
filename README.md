@@ -7,9 +7,10 @@
 * **High-FPS Smoothness (`120Hz` Physics + Physics Interpolation + 8-Frame Run Cycle + Full-Refresh-Rate Spring Hair)**:
   * Crisp 16-bit pixel art rendered cleanly in `canvas_items` stretch mode with `TEXTURE_FILTER_NEAREST` and static terrain caching for locked 120–240+ FPS.
   * Dynamic 6-node *Celeste*-style ponytail hair physics that communicates Dash charge color in real time (`Orange-Red` = Ready, `Cyan` = Spent, `White Flash` = Refilled).
-* **1:1 Celeste-Aligned Feel & Flow-Driven Level Design**:
-  * 8-Way Air Dash (45ms freeze-frame, 4px corner correction, Wave/Hyper/Super Dash, Wall Bounce), Wall Grab & Climb with 110 Stamina, Jump Apex anti-gravity hang, Coyote Time & Jump Buffering.
-  * Sight-readable *Celeste*-style rooms featuring **Green Dash Refill Crystals**, **Traffic Zip-Mover Blocks**, **Starry Glitch Dream Blocks** (dash straight through corrupted code!), **Omni-Springs**, and **Celeste Strawberry-style Following Bagua Trigrams**.
+* **1:1 Celeste-Grade Feel × 100% Pure Kaizo Trap WYSIWYG World**:
+  * **Celeste Physics Feel**: 8-Way Air Dash (42ms freeze-frame, 4px corner correction, Wave/Hyper/Super Dash, Wall Bounce), Wall Grab & Climb with 110 Stamina, Jump Apex anti-gravity hang, Coyote Time & Jump Buffering.
+  * **100% Authentic Kaizo Trap Visuals & WYSIWYG Fairness (Zero Cheap Blind Traps!)**: 14 sight-readable rooms spanning 8 iconic biomes — **Living Room Intro**, **Assembly Code Vortex (1:23)**, **Palm Overworld**, **Gale Peaks (Wind Trigram ☴)**, **Frozen Cavern**, **Basalt Volcano**, **Liquid Pain Factory (`液体痛み/敗者の涙/濃厚苦しみ`, `1983` NES)**, **`CONTINUE? (Y/N)` Void**, **Corrupted Zo Core Boss (Heart Cable Pull)**, and **Glitch Escape & Abandoned House**!
+  * Authentic Kaizo mechanics: **Golden Bagua Resonance Orbs**, **Industrial Steel Rail Platforms**, **ZhugeDOS `57/77` Hex Code Curtains**, **Wind Gust Zones**, **Ammonite Shell Jumps**, **Telegraphed Shaking Coconuts & Icicles**, **Winged Bagua Talismans**, and **Playable Zo Mode**!
 * **Full Celeste Assist Mode (`F2`)**:
   * Stepped **Game Speed (`100%` down to `50%`)**, **Invincibility Shield** (hazard & bottomless pit bounce), **Air Dashes (`1 / 2 / Infinite`)**, **Infinite Stamina**, Hidden Block Outlines, Save States (`F5`/`F7`), and toggleable CRT Scanlines.
 * **Full 5-Biome Campaign + Arrange Mode (2nd Loop) + Multi-Ending ARG**:

@@ -26,6 +26,8 @@ var ending_desc_lbl: Label
 var shake_amount: float = 0.0
 var glitch_burst: float = 0.0
 var hitstop_timer: float = 0.0
+var wipe_rect: ColorRect
+var wipe_alpha: float = 0.0
 var is_in_title: bool = true
 
 
@@ -70,6 +72,8 @@ func _setup_ui() -> void:
 	hud.request_save_state.connect(_save_assist_state)
 	hud.request_load_state.connect(_load_assist_state)
 	hud.request_toggle_arrange.connect(_toggle_arrange_mode)
+	hud.request_toggle_character.connect(func(): player.set_character(GameState.playable_character))
+	hud.request_next_room.connect(_warp_to_next_room)
 	add_child(hud)
 
 	manual_ui = ManualOverlay.new()
@@ -120,6 +124,12 @@ func _setup_shaders() -> void:
 		mat.set_shader_parameter("enable_crt", GameState.assist_crt_enabled)
 		crt_rect.material = mat
 	shader_layer.add_child(crt_rect)
+
+	wipe_rect = ColorRect.new()
+	wipe_rect.set_anchors_preset(Control.PRESET_FULL_RECT)
+	wipe_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	wipe_rect.color = Color(0.04, 0.04, 0.08, 0.0)
+	shader_layer.add_child(wipe_rect)
 
 
 func _setup_title_and_ending_screens() -> void:
@@ -245,8 +255,17 @@ func load_room(room_id: String) -> void:
 	current_room.build_from_spec(spec, GameState.arrange_mode)
 	player.is_on_ice = current_room.is_ice_room
 	player.set_spawn(current_room.spawn_pos)
+	wipe_alpha = 0.65
 	_update_biome_shaders()
 	_update_biome_bgm(spec.get("bgm", "overworld"))
+
+
+func _warp_to_next_room() -> void:
+	var ids: Array[String] = StageCatalog.get_all_room_ids()
+	var idx: int = ids.find(current_room.room_id)
+	var next_id: String = ids[wrapi(idx + 1, 0, ids.size())]
+	load_room(next_id)
+	hud.show_toast("WARPED TO " + GameState.current_room)
 
 
 func _update_biome_bgm(bgm_key: String) -> void:
@@ -325,8 +344,12 @@ func _show_ending(ending_id: String) -> void:
 	SecretManager.unlock_ending(ending_id)
 	var info: Dictionary = SecretManager.ENDINGS.get(ending_id, {"title": ending_id, "desc": ""})
 	ending_title_lbl.text = info["title"]
-	ending_desc_lbl.text = "%s\n\nDeaths: %d  |  Time: %s  |  Endings Found: %d/%d" % [
+	var extra: String = ""
+	if ending_id == "true":
+		extra = "\n[NO ENTER // ABANDONED HOUSE — ZO SKIN UNLOCKED IN F2!]"
+	ending_desc_lbl.text = "%s%s\n\nDeaths: %d  |  Time: %s  |  Endings Found: %d/%d" % [
 		info["desc"],
+		extra,
 		GameState.total_deaths,
 		GameState.format_clock(),
 		SecretManager.get_ending_count(),
@@ -392,6 +415,10 @@ func _process(delta: float) -> void:
 		if glitch_rect and glitch_rect.material is ShaderMaterial:
 			var base_g := 0.28 if current_room.biome == "glitch_escape" else 0.0
 			glitch_rect.material.set_shader_parameter("glitch_intensity", maxf(base_g, glitch_burst))
+
+	if wipe_alpha > 0.0 and wipe_rect:
+		wipe_alpha = maxf(0.0, wipe_alpha - 4.2 * delta)
+		wipe_rect.color.a = wipe_alpha
 
 	# Out-of-bounds pit kill (or Celeste Invincibility Pit Bounce!)
 	if not is_in_title and not player.is_dead and player.global_position.y > 192.0:

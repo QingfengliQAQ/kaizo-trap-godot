@@ -98,6 +98,12 @@ func cycle_air_dashes() -> int:
 	return assist_air_dashes
 
 
+func toggle_playable_character() -> String:
+	playable_character = "zo" if playable_character == "kai" else "kai"
+	assist_changed.emit()
+	return playable_character
+
+
 func get_max_dashes() -> int:
 	if difficulty == DifficultyMode.ASSIST:
 		return assist_air_dashes

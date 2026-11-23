@@ -10,6 +10,8 @@ signal request_toggle_crt(enabled: bool)
 signal request_save_state()
 signal request_load_state()
 signal request_toggle_arrange()
+signal request_toggle_character()
+signal request_next_room()
 
 var top_bar: Label
 var fps_label: Label
@@ -24,7 +26,7 @@ var btn_speed: Button
 var btn_invincible: Button
 var btn_dashes: Button
 var btn_stamina: Button
-var btn_hidden: Button
+var btn_char: Button
 var btn_inputs: Button
 var btn_crt: Button
 
@@ -114,13 +116,15 @@ func _build_ui() -> void:
 	btn_invincible = _add_menu_btn(2, Callable(self, "_btn_toggle_invincible"))
 	btn_dashes = _add_menu_btn(3, Callable(self, "_btn_cycle_dashes"))
 	btn_stamina = _add_menu_btn(4, Callable(self, "_btn_toggle_stamina"))
-	btn_hidden = _add_menu_btn(5, Callable(self, "_btn_toggle_hidden"))
-	btn_inputs = _add_menu_btn(6, Callable(self, "_btn_toggle_inputs"))
+	btn_char = _add_menu_btn(5, Callable(self, "_btn_toggle_char"))
+	var btn_skip := _add_menu_btn(6, Callable(self, "_btn_next_room"))
+	btn_skip.text = "Chapter Warp: Next Room >>"
 	var btn_save := _add_menu_btn(7, Callable(self, "_btn_save_state"))
 	btn_save.text = "Save State [F5] / Load [F7]"
 	var btn_arr := _add_menu_btn(8, Callable(self, "_btn_toggle_arrange"))
 	btn_arr.text = "Toggle Arrange Mode (2nd Loop)"
 	btn_crt = _add_menu_btn(9, Callable(self, "_btn_toggle_crt"))
+	btn_inputs = null
 
 
 func _add_menu_btn(row: int, cb: Callable) -> Button:
@@ -143,9 +147,18 @@ func _refresh_assist_buttons() -> void:
 	var d_txt := "INFINITE" if GameState.assist_air_dashes >= 99 else str(GameState.assist_air_dashes)
 	btn_dashes.text = "Air Dashes: %s" % d_txt
 	btn_stamina.text = "Infinite Stamina: %s" % ("ON" if GameState.assist_infinite_stamina else "OFF")
-	btn_hidden.text = "Show Hidden Blocks: %s" % ("ON" if GameState.assist_show_hidden_blocks else "OFF")
-	btn_inputs.text = "Input Display: %s" % ("ON" if GameState.assist_show_input_display else "OFF")
+	btn_char.text = "Character: %s (Swap)" % GameState.playable_character.to_upper()
 	btn_crt.text = "CRT Scanlines: %s" % ("ON" if GameState.assist_crt_enabled else "OFF")
+
+
+func _btn_toggle_char() -> void:
+	var ch := GameState.toggle_playable_character()
+	request_toggle_character.emit()
+	show_toast("CHARACTER: " + ch.to_upper())
+
+
+func _btn_next_room() -> void:
+	request_next_room.emit()
 
 
 func _btn_toggle_mode() -> void:
