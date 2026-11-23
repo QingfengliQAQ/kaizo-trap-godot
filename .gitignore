@@ -1,0 +1,20 @@
+# Reference raw downloads & external copyright materials (never distribute)
+reference/
+assets_raw/
+.omc/
+.omx/
+logs/
+scripts/
+
+# Godot engine binary & cache
+tools/godot/
+game/.godot/
+*.import
+*.translation
+
+# OS & Python
+__pycache__/
+*.pyc
+.DS_Store
+*.log
+.env

@@ -1,0 +1,22 @@
+{
+  "model": "chatgpt-image-latest",
+  "style_prefix": "Crisp 16-bit SNES/Celeste retro indie game pixel art, bold clean dark outlines, flat vibrant cel-shaded pixel colors, NO anti-aliasing, NO gradients, NO blur, NO text labels, strictly isolated objects on an evenly spaced grid.",
+  "assets": [
+    {
+      "id": "biomes_tiles",
+      "out": "assets_raw/biomes_tiles_raw.png",
+      "size": "1024x1024",
+      "quality": "medium",
+      "background": "transparent",
+      "prompt": "A 4 columns by 3 rows square tile/prop grid (12 evenly spaced isolated 16-bit platformer game tiles with generous transparent space between cells, no grid lines drawn): Row 1 (Ice biome): (1) glossy snow-topped icy blue ground block, (2) deep frozen blue crystal underground tile, (3) sharp hanging icicle trap pointing downward, (4) shimmering glowing cyan ice floor crystal. Row 2 (Volcano biome): (5) dark obsidian volcanic rock block with glowing orange lava cracks, (6) bright bubbling molten lava surface block, (7) crumbling hot basalt rock boulder, (8) dark fiery cave stone wall tile. Row 3 (Factory & Core biome): (9) industrial steel factory grate block with yellow-black hazard stripes, (10) glass containment tank filled with glowing green-cyan liquid, (11) spinning metallic factory sawblade hazard, (12) dark corrupted purple-black digital glitch circuit block with neon magenta lines."
+    },
+    {
+      "id": "zo_and_boss",
+      "out": "assets_raw/zo_and_boss_raw.png",
+      "size": "1024x1024",
+      "quality": "medium",
+      "background": "transparent",
+      "prompt": "A 4 columns by 2 rows sprite sheet grid (8 evenly spaced isolated 16-bit pixel art sprites with generous transparent padding, no grid lines drawn): Row 1 (Zo, cute cartoon young man with spiky reddish-brown hair, sky-blue t-shirt, grey-blue pants, white sneakers): (1) Zo standing idle facing right, (2) Zo running pose, (3) Zo trapped floating inside a dark-blue glass liquid containment pod with glowing cables attached, (4) Zo translucent cyan-white glowing ghost silhouette pointing forward to guide a path. Row 2 (Corrupted Core Boss & Props): (5) terrifying floating black void core boss with two fierce glowing crimson-red eyes and dark digital aura, (6) floating cybernetic laser cannon turret glowing white and red, (7) retro 1980s grey NES-style game console buried partially in ground, (8) retro chunky CRT television set displaying static glow."
+    }
+  ]
+}

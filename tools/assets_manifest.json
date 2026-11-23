@@ -1,0 +1,30 @@
+{
+  "model": "chatgpt-image-latest",
+  "style_prefix": "Crisp 16-bit SNES retro indie game pixel art, bold clean dark outlines, flat cel-shaded pixel colors, NO anti-aliasing, NO gradients, NO blur, NO text labels, strictly aligned on an invisible regular grid.",
+  "assets": [
+    {
+      "id": "kai_sheet",
+      "out": "assets_raw/kai_sheet_raw.png",
+      "size": "1024x1024",
+      "quality": "medium",
+      "background": "transparent",
+      "prompt": "A 4 columns by 3 rows sprite sheet grid (12 evenly spaced separate sprites, plenty of empty padding between cells, no grid lines drawn) of the EXACT SAME cute cartoon platformer heroine facing right: bright orange-red hair in a high ponytail tied with a purple ribbon bow, big expressive cartoon eyes, pastel lavender sleeveless dress, small pink-lavender shoes. Strictly 4 columns x 3 rows: Row 1: (1) standing idle, (2) running stride A, (3) running stride B, (4) sprint leaning forward. Row 2: (5) jumping upward, (6) falling downward, (7) sliding down a wall bracing hand, (8) crouching low. Row 3: (9) low floor dash slide feet forward, (10) kicking forward with foot raised, (11) shocked comedic death recoil pose, (12) happy victory pose."
+    },
+    {
+      "id": "overworld_objects",
+      "out": "assets_raw/overworld_objects_raw.png",
+      "size": "1024x1024",
+      "quality": "medium",
+      "background": "transparent",
+      "prompt": "A 4 columns by 3 rows icon/tile sheet grid (12 evenly spaced isolated square retro game objects with generous transparent padding, no grid lines drawn): Row 1: (1) bright lime grass-topped brown dirt ground block, (2) solid brown dirt stone underground tile, (3) golden-yellow rounded square mystery block with six horizontal dashed bars forming a Bagua trigram in the center, (4) cracked crumbling stone block. Row 2: (5) white metallic keyhole pedestal block with a keyhole in center, (6) cute retro silver key with a smiling icon on its bow, (7) coiled dark-grey metallic ammonite spiral shell with glowing orange center, (8) metallic red-and-silver bounce spring pad. Row 3: (9) sharp glowing ice-blue electric spikes facing up, (10) brown tropical coconut fruit, (11) checkered red-and-white retro victory goal flag on pole, (12) wooden directional warning sign arrow pointing right."
+    },
+    {
+      "id": "manual_cover_art",
+      "out": "assets_raw/manual_art_raw.png",
+      "size": "1024x1024",
+      "quality": "medium",
+      "background": "opaque",
+      "prompt": "Vintage 1980s NES game instruction booklet illustration style, clean white paper background, ONLY navy-blue ink outlines with flat pastel orange and pale blue accents (strict 3-color retro print aesthetic): A charming diagram of a retro rectangular NES-style game controller with a D-pad on the left and 4 round buttons on the right, surrounded by cute schematic arrows and an isometric keyhole pedestal block, crisp print art, no messy artifacts."
+    }
+  ]
+}
